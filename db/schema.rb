@@ -21,11 +21,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_02_202741) do
   end
 
   create_table "chapters", force: :cascade do |t|
+    t.integer "number"
     t.string "title"
     t.text "synopsis"
     t.string "book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["number", "book_id"], name: "index_chapters_on_number_and_book_id", unique: true
   end
 
   create_table "comments", force: :cascade do |t|

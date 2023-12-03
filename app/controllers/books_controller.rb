@@ -66,6 +66,8 @@ class BooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:title, :author, :synopsis).merge({ id: params[:book][:title].downcase.gsub(" ", "-")})
+      id = params[:book][:title].downcase.gsub(/[^a-zA-Z0-9]/, "-")
+      id = id[0...-1] while id[-1] == "-"
+      params.require(:book).permit(:title, :author, :synopsis, :image_url).merge({ id: })
     end
 end
