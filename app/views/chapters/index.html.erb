@@ -1,0 +1,18 @@
+<div class="flex">
+  <div><%= @book.title %></div>
+  <div><%= @book.author %></div>
+</div>
+
+<div>
+  <% @book.chapters.each do |chapter| %>
+    <%= link_to chapter.title, book_chapter_path(@book.id, chapter.id) %>
+  <% end %>
+</div>
+
+<div>
+  Add Chapter
+  <form method="post" action="chapters">
+    <input name="chapter[title]">
+    <button type="submit">Submit</button>
+  </form>
+

@@ -1,0 +1,12 @@
+<% unless @comment %>
+    <form method="post" action="/comments">
+        <input type=hidden name="comment[key]" value="<%= @key %>">
+        <input type=hidden name="comment[key_type]" value="<%= @key_type %>">
+        <input name="comment[author]">
+        <input name="comment[note]">
+        <button type=submit>Submit</button>
+    </form>
+<% else %>
+    <%= @comment.author %>
+    <%= @comment.note %>
+<% end %>
