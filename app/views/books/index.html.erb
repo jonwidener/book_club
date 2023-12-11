@@ -1,20 +1,13 @@
+<div class="px-8 py-2 h-12 bg-white border-b-2 border-green-200 shadow-md w-screen flex justify-between z-10">
+  <div class="font-bold text-xl">Book Club</div>
+  <%= link_to "Books", books_path %>
+</div>
 <div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
-
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Books</h1>
-    <%= link_to "New book", new_book_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
-
-  <div id="books" class="min-w-full flex space-x-4 bg-gray-200 p-4">
+  <div id="books" class="min-w-full flex space-x-4 p-4">
     <% @books.each do |book| %>
       <%= link_to book do %>
         <div class="max-w-[200px] rounded-lg shadow-lg p-4 bg-white">
           <img src="<%= book.image_url %>">
-          <div class="font-bold"><%= book.title %></div>
-          <div class="text-sm text-gray-700 italic"><%= book.author %></div>
         </div>
       <% end %>
     <% end %>
