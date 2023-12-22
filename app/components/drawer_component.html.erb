@@ -1,0 +1,29 @@
+<div data-controller="drawer" class="sm:hidden">
+    <svg class="absolute top-2 left-2 cursor-pointer" data-action="click->drawer#openNav" width="24" height="24" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <use xlink:href="<%= image_path("burger-menu.svg") %>#shape"></use>
+    </svg>
+    
+    <!-- this would work as the backdrop when navbar is open-->
+    <div class="backdrop-container" id="backdrop" data-action="click->drawer#closeNav"></div>
+
+    <!--the would be the drawer and it's content-->
+    <div id="mySidenav" class="sidenav-container">
+        <span class="drawer-close-button">
+        <!--icon for closing of the navbar-->
+            <a href="javascript:void(0)" class="closebtn" data-action="click->drawer#closeNav">&times;</a>
+        </span>
+        <!--Each links on the navbar-->
+        
+        <div class="w-64 px-4 h-full">
+            <%= link_to @book do %>
+            <%= image_tag @book.image_url%>
+            <% end %>
+            <ul class="mt-2 text-sm">
+            <% @book.chapters.order(:number).each do |chapter| %>
+                <li class="space-y-2 border-green-300 border-b-2 py-1">
+                <%= link_to "#{chapter.number}. #{chapter.title}", book_chapter_path(@book, chapter.number) %>
+                </li>
+            <% end %>
+        </div>
+    </div>
+</div>
