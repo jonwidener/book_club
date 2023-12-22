@@ -23,8 +23,8 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: book_club
+  database: book_club_bee2
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: book_club
+  username: book_club_bee2_user
   password: <%= ENV['BOOK_CLUB_DATABASE_PASSWORD'] %>
   url: <%= ENV['DATABASE_URL'] %>
