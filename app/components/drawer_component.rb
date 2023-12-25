@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class DrawerComponent < ViewComponent::Base # rubocop:disable Style/Documentation
+class DrawerComponent < ViewComponent::Base
   def initialize(book)
     @book = book
     super

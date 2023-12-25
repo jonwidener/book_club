@@ -1,19 +1,21 @@
+# frozen_string_literal: true
+
 class ChaptersController < ApplicationController
   before_action :set_book
   before_action :set_chapter, only: :show
 
-  def index
-  end
+  def index; end
 
   def show
-    @comments = Comment.where(key: @chapter.id, key_type: "chapter")
+    @comments = Comment.where(key: "#{@book.id}|#{@chapter.id}", key_type: 'chapter')
   end
 
   def create
     Chapter.create!(chapter_params)
   end
 
-private
+  private
+
   def chapter_params
     params.require(:chapter).permit(:number, :title, :synopsis).merge({ book_id: @book.id })
   end
